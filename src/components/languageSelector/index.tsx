@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import BR_FLAG from "../../assets/imgs/BR_FLAG.webp";
 import EUA_FLAG from "../../assets/imgs/EUA_FLAG.webp";
 import useToggle from "../../hooks/useToggle";
+import { useAppSelector } from "../../store/hooks";
+import { changeLanguage } from "../../store/language";
 
 const Component = styled.div`
   position: relative;
@@ -31,22 +33,18 @@ const LanguageOption = styled.div`
 `;
 
 function LanguageDropDown() {
-  const [Language, setLanguage] = useState("PTBR");
+  const dispatch = useDispatch();
   const [PickingLanguage, ToggleLanguageModal] = useToggle(false);
-  const Languages = [
-    {
-      name: "Portugues",
-      flag: BR_FLAG,
-      key: "PTBR",
-    },
-    {
-      name: "English",
-      flag: EUA_FLAG,
-      key: "EN",
-    },
-  ];
+  const Language = useAppSelector((state) => state.language.data.language);
+  const Languages = useAppSelector((state) => state.language.data.languages);
+
+  function pickLanguage(language: typeof Language) {
+    dispatch(changeLanguage(language));
+    ToggleLanguageModal(false);
+  }
+
   return (
-    <Component>
+    <Component onBlur={() => ToggleLanguageModal(false)}>
       <div data-testid="dropdown" onClick={() => ToggleLanguageModal(PickingLanguage)}>
         {Language === "PTBR" && <Flag src={BR_FLAG} alt="flag" />}
         {Language === "EN" && <Flag src={EUA_FLAG} alt="flag" />}
@@ -56,7 +54,7 @@ function LanguageDropDown() {
           {Languages.map((language) => {
             return (
               <label htmlFor="language-option" style={{ cursor: "pointer" }} key={language.key}>
-                <LanguageOption id="language-option" onClick={() => setLanguage(language.key)}>
+                <LanguageOption id="language-option" onClick={() => pickLanguage(language.key)}>
                   <Flag src={language.flag} alt={language.key} />
                   <b>{language.name}</b>
                 </LanguageOption>

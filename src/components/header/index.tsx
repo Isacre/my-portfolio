@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import reactlogo from "../../assets/imgs/react-logo.png";
 import LanguageDropDown from "../languageSelector";

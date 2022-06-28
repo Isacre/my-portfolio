@@ -1,9 +1,22 @@
-import React from "react";
 import kanbandnd from "../../assets/imgs/kanbandnd.png";
 import memememo from "../../assets/imgs/memememo.png";
 import chiqdparis from "../../assets/imgs/chiqdparis.png";
 
-export const Projects = [
+export interface ProjectType {
+  title: string;
+  description: {
+    PTBR: string;
+    EN: string;
+  };
+  image: string;
+  link: {
+    github: string;
+    netlify: string;
+  };
+  tech: string[];
+}
+
+export const Projects: ProjectType[] = [
   {
     title: "KanbanDND",
     description: {
@@ -11,8 +24,10 @@ export const Projects = [
       EN: "A project of Kanban using Drag and Drop to organize tasks.",
     },
     image: kanbandnd,
-    githublink: "",
-    url: "",
+    link: {
+      github: "",
+      netlify: "",
+    },
     tech: ["React", "Redux", "Javascript", "Styled-components"],
   },
   {
@@ -22,8 +37,23 @@ export const Projects = [
       EN: "Personal project of an e-commerce for ChiqDparis.",
     },
     image: chiqdparis,
-    githublink: "",
-    url: "",
+    link: {
+      github: "",
+      netlify: "",
+    },
+    tech: ["React", "Redux", "TypeScript", "Styled-components"],
+  },
+  {
+    title: "MemeMemo",
+    description: {
+      PTBR: "Projeto pessoal de um jogo de memoria.",
+      EN: "Personal project of a memory game",
+    },
+    image: memememo,
+    link: {
+      github: "",
+      netlify: "",
+    },
     tech: ["React", "Redux", "TypeScript", "Styled-components"],
   },
 ];

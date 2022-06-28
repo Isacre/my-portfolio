@@ -14,7 +14,7 @@ interface Props {
 function SocialMediaLink(props: Props) {
   return (
     <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }} transition={{ duration: 0.1 }}>
-      <a target="_blank" href={props.link}>
+      <a target="_blank" rel="noreferrer" href={props.link}>
         <Image src={props.image} alt={props.link} />
       </a>
     </motion.div>

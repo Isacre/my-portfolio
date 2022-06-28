@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import webicon from "../../assets/imgs/web.webp";
 import githubicon from "../../assets/imgs/githubicon.png";
+import { ProjectType } from "../../data/projects";
 
 const Component = styled.div`
   position: relative;
@@ -11,18 +12,25 @@ const Component = styled.div`
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   display: grid;
-  padding: 15px;
+
+  .project-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
 `;
 const Content = styled.div`
   position: absolute;
   width: calc(1000px / 3 - 15px);
   height: 200px;
-  background-color: rgba(206, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   display: grid;
   padding: 15px;
   opacity: 0%;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
   :hover {
     opacity: 100%;
   }
@@ -45,15 +53,20 @@ const Links = styled.div`
     }
   }
 `;
-export default function Project(props: any) {
+
+interface Props {
+  project: ProjectType;
+}
+export default function Project(props: Props) {
   return (
     <Component>
+      <img className="project-background" src={props.project.image} alt={props.project.title} />
       <Content>
         <Links>
-          <a target="_blank" href={props.project.link.github}>
+          <a target="_blank" rel="noreferrer" href={props.project.link.github}>
             <img src={githubicon} alt={"git"} />
           </a>
-          <a target="_blank" href={props.project.link.netlify}>
+          <a target="_blank" rel="noreferrer" href={props.project.link.netlify}>
             {" "}
             <img src={webicon} alt={"web"} />
           </a>
