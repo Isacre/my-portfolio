@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import reactlogo from "../../assets/imgs/react-logo.png";
 import LanguageDropDown from "../languageSelector";
-
+import { LanguageSelector } from "../../utils";
 const Component = styled.div`
   display: flex;
   align-items: center;
@@ -52,17 +52,14 @@ function Header(props: Props) {
     },
   };
 
-  function LanguageSelector(key: "projects" | "contact" | "resume" | "language", language: "EN" | "PTBR") {
-    return translation[key][language];
-  }
   return (
     <Component>
       <ReactLogo src={reactlogo} alt="react-logo" />
       <HeaderNav>
         <ul>
-          <li>{LanguageSelector("projects", language)}</li>
-          <li>{LanguageSelector("contact", language)}</li>
-          <li>{LanguageSelector("resume", language)}</li>
+          <li>{LanguageSelector(translation, "projects", language)}</li>
+          <li>{LanguageSelector(translation, "contact", language)}</li>
+          <li>{LanguageSelector(translation, "resume", language)}</li>
         </ul>
         <LanguageDropDown />
       </HeaderNav>

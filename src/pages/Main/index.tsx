@@ -9,6 +9,7 @@ import { Projects } from "../../data/projects";
 import { ProjectType } from "../../data/projects";
 import * as S from "./styles";
 import { useAppSelector } from "../../store/hooks";
+import Description from "../Description";
 
 function MainPage() {
   const Language = useAppSelector((state) => state.language.data.language);
@@ -18,17 +19,13 @@ function MainPage() {
         <Header language={Language} />
         <S.AboutMe>
           <S.Photo src={ProfilePicture} alt="profile" />
-          <S.Text>
-            <h2>Oi, sou o Isaac</h2>
-            <h1>Sou apaixonado por Front-End e desenvolvo para a web.</h1>
-            <p>Um profissional em constante aprendizado </p>
-          </S.Text>
+          <Description language={Language} />
           <S.SocialMediaContainer>
             <SocialMediaLink image={githublogo} link="https://github.com/Isacre" />
             <SocialMediaLink image={linkedinlogo} link="https://www.linkedin.com/in/isaac-alves-melo-319b45185/" />
           </S.SocialMediaContainer>
         </S.AboutMe>
-        <Section title="Projetos">
+        <Section title={Language === "EN" ? "Projects" : "Projetos"}>
           <S.ProjectsContainer>
             {Projects.map((project: ProjectType) => (
               <Project key={project.title} project={project} />

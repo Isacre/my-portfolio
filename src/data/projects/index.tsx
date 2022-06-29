@@ -25,8 +25,8 @@ export const Projects: ProjectType[] = [
     },
     image: kanbandnd,
     link: {
-      github: "",
-      netlify: "",
+      github: "https://github.com/Isacre/kanban-dnd",
+      netlify: "https://kanbandnd.netlify.com/",
     },
     tech: ["React", "Redux", "Javascript", "Styled-components"],
   },
@@ -38,8 +38,8 @@ export const Projects: ProjectType[] = [
     },
     image: chiqdparis,
     link: {
-      github: "",
-      netlify: "",
+      github: "https://github.com/Isacre/Chiqdparis_STORE",
+      netlify: "https://chiqdparis.netlify.app/",
     },
     tech: ["React", "Redux", "TypeScript", "Styled-components"],
   },
@@ -51,8 +51,8 @@ export const Projects: ProjectType[] = [
     },
     image: memememo,
     link: {
-      github: "",
-      netlify: "",
+      github: "https://github.com/Isacre/memorygame",
+      netlify: "https://memememo.netlify.app/",
     },
     tech: ["React", "Redux", "TypeScript", "Styled-components"],
   },
